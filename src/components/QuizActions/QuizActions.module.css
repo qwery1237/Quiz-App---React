@@ -1,0 +1,7 @@
+.form input[type='radio'] {
+  appearance: none;
+}
+
+.form input[type='radio']:checked + label {
+  background-color: aqua;
+}
