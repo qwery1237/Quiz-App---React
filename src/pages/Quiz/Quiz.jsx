@@ -17,7 +17,6 @@ export default function Quiz() {
   useEffect(() => {
     const data = localStorage.getItem(['quiz', key]);
     if (data) {
-      console.log(JSON.parse(data));
       setQuizzes(JSON.parse(data));
       setCurrentQuizIndex(+localStorage.currentQuizIndex);
       setScore(+localStorage.score);

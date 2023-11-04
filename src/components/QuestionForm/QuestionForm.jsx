@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import QuestionResult from '../QuestionResult/QuestionResult';
 
 export default function QuestionForm({
   quiz,
@@ -123,26 +124,6 @@ export default function QuestionForm({
           );
         });
   };
-  const showResult = () => {
-    const correctAnswers = Object.entries(quiz.correct_answers)
-      .filter((answer) => answer[1] === 'true')
-      .map((a) => a[0][7])
-      .join(', ');
-    return (
-      <>
-        <div>
-          <span>{isCorrect() ? 'Correct!' : 'Wrong!'}</span>
-          <span>{`Correct Answer(s): ${correctAnswers}`}</span>
-          <p>{quiz.explanation || 'There is no explanation.'}</p>
-        </div>
-        {isLastQuestion ? (
-          <button onClick={goResultPage}>Result</button>
-        ) : (
-          <button onClick={goNext}>Next</button>
-        )}
-      </>
-    );
-  };
   const isCorrect = () => {
     const choice = Object.entries(userChoice)
       .filter((choice) => choice[1])
@@ -166,10 +147,18 @@ export default function QuestionForm({
       <span>
         {quizIndex + 1}. {quiz.question}
       </span>
-      {console.log(userChoice, isSubmitted)}
       {showOptions()}
       {!isSubmitted && <button>submit</button>}
-      {isSubmitted && showResult()}
+      {isSubmitted && (
+        <>
+          <QuestionResult quiz={quiz} isCorrect={isCorrect()} />
+          {isLastQuestion ? (
+            <button onClick={goResultPage}>Result</button>
+          ) : (
+            <button onClick={goNext}>Next</button>
+          )}
+        </>
+      )}
       <div>{score}</div>
     </form>
   );
