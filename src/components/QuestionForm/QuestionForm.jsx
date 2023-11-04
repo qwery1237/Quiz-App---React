@@ -7,20 +7,25 @@ export default function QuestionForm({
   setQuizIndex,
   score,
   setScore,
+  quizKey,
   lastIndex,
 }) {
   const navigate = useNavigate();
   const [userChoice, setUserChoice] = useState(
-    JSON.parse(localStorage.userChoice) || {
-      answer_a: false,
-      answer_b: false,
-      answer_c: false,
-      answer_d: false,
-      answer_e: false,
-      answer_f: false,
-    }
+    localStorage.userChoice
+      ? JSON.parse(localStorage.userChoice)
+      : {
+          answer_a: false,
+          answer_b: false,
+          answer_c: false,
+          answer_d: false,
+          answer_e: false,
+          answer_f: false,
+        }
   );
-  const [isSubmitted, setIsSubmitted] = useState(localStorage.isSubmitted);
+  const [isSubmitted, setIsSubmitted] = useState(
+    localStorage.isSubmitted ? localStorage.isSubmitted === 'true' : false
+  );
 
   const isMultipleQuestion = quiz.multiple_correct_answers === 'true';
   const isLastQuestion = quizIndex === lastIndex;
@@ -38,22 +43,32 @@ export default function QuestionForm({
           updated[key] = false;
         }
       });
+    localStorage.userChoice = JSON.stringify(updated);
     setUserChoice(updated);
   };
   const handleSubmit = (e) => {
     e.preventDefault();
     localStorage.isSubmitted = true;
-    localStorage.userChoice = JSON.stringify(userChoice);
     setIsSubmitted(!isSubmitted);
     if (isCorrect()) {
       localStorage.score = score + 1;
       setScore(score + 1);
     }
   };
-  const goNext = () => {
-    localStorage.isSubmitted = false;
+  const goNext = (e) => {
+    e.preventDefault();
     localStorage.currentQuizIndex = quizIndex + 1;
     setQuizIndex(quizIndex + 1);
+    localStorage.isSubmitted = false;
+    localStorage.userChoice = JSON.stringify({
+      answer_a: false,
+      answer_b: false,
+      answer_c: false,
+      answer_d: false,
+      answer_e: false,
+      answer_f: false,
+    });
+    setIsSubmitted(false);
     setUserChoice({
       answer_a: false,
       answer_b: false,
@@ -64,6 +79,10 @@ export default function QuestionForm({
     });
   };
   const goResultPage = () => {
+    localStorage.removeItem('userChoice');
+    localStorage.removeItem('isSubmitted');
+    localStorage.removeItem(['quiz', quizKey]);
+    localStorage.removeItem('currentQuizIndex');
     navigate('result');
   };
   const showOptions = () => {
@@ -147,6 +166,7 @@ export default function QuestionForm({
       <span>
         {quizIndex + 1}. {quiz.question}
       </span>
+      {console.log(userChoice, isSubmitted)}
       {showOptions()}
       {!isSubmitted && <button>submit</button>}
       {isSubmitted && showResult()}

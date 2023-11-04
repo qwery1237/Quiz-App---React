@@ -30,6 +30,10 @@ export default function Quiz() {
       setIsLoading(false);
       localStorage.score = 0;
       localStorage.currentQuizIndex = 0;
+      if (localStorage.isSubmitted) {
+        localStorage.removeItem('isSubmitted');
+        localStorage.removeItem('userChoice');
+      }
     });
   }, []);
   return (
@@ -46,6 +50,7 @@ export default function Quiz() {
             setQuizIndex={setCurrentQuizIndex}
             score={score}
             setScore={setScore}
+            quizKey={key}
             lastIndex={quizzes.length - 1}
           />
         )}
