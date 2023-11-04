@@ -7,20 +7,33 @@ import QuestionForm from '../../components/QuestionForm/QuestionForm';
 export default function Quiz() {
   const [quizzes, setQuizzes] = useState([]);
   const [currentQuizIndex, setCurrentQuizIndex] = useState(0);
+  const [score, setScore] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const location = useLocation();
+  const key = location.key;
   const {
     state: { params },
   } = useLocation();
-
   useEffect(() => {
-    getQuiz(params).then((res) => {
+    const data = localStorage.getItem(['quiz', key]);
+    if (data) {
+      console.log(JSON.parse(data));
+      setQuizzes(JSON.parse(data));
+      setCurrentQuizIndex(+localStorage.currentQuizIndex);
+      setScore(+localStorage.score);
+      setIsLoading(false);
+      return;
+    }
+
+    getQuiz(params, key).then((res) => {
       setQuizzes(res);
       setIsLoading(false);
+      localStorage.score = 0;
+      localStorage.currentQuizIndex = 0;
     });
   }, []);
   return (
     <>
-      {console.log(quizzes)}
       <header>
         <h2>{params.category} Quiz</h2>
         <h4 className={styles.difficulty}>{params.difficulty}</h4>
@@ -31,6 +44,8 @@ export default function Quiz() {
             quiz={quizzes[currentQuizIndex]}
             quizIndex={currentQuizIndex}
             setQuizIndex={setCurrentQuizIndex}
+            score={score}
+            setScore={setScore}
             lastIndex={quizzes.length - 1}
           />
         )}

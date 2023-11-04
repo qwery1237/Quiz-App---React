@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-export async function getQuiz(params) {
+export async function getQuiz(params, key) {
   const { category, difficulty, limit } = params;
   return axios
     .get('https://quizapi.io/api/v1/questions', {
@@ -11,5 +11,8 @@ export async function getQuiz(params) {
         limit,
       },
     })
-    .then((res) => res.data);
+    .then((res) => {
+      localStorage.setItem(['quiz', key], JSON.stringify(res.data));
+      return res.data;
+    });
 }

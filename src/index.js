@@ -7,6 +7,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Home from './pages/Homepage/Home';
 import Quiz from './pages/Quiz/Quiz';
 import NotFound from './pages/NotFound/NotFound';
+import Result from './pages/Result/Result';
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: 'quiz', element: <Quiz /> },
+      { path: 'quiz/result', element: <Result /> },
     ],
   },
 ]);

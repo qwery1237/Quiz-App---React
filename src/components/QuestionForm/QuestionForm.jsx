@@ -1,21 +1,26 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function QuestionForm({
   quiz,
   quizIndex,
   setQuizIndex,
+  score,
+  setScore,
   lastIndex,
 }) {
-  const [userChoice, setUserChoice] = useState({
-    answer_a: false,
-    answer_b: false,
-    answer_c: false,
-    answer_d: false,
-    answer_e: false,
-    answer_f: false,
-  });
-  const [score, setScore] = useState(0);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const navigate = useNavigate();
+  const [userChoice, setUserChoice] = useState(
+    JSON.parse(localStorage.userChoice) || {
+      answer_a: false,
+      answer_b: false,
+      answer_c: false,
+      answer_d: false,
+      answer_e: false,
+      answer_f: false,
+    }
+  );
+  const [isSubmitted, setIsSubmitted] = useState(localStorage.isSubmitted);
 
   const isMultipleQuestion = quiz.multiple_correct_answers === 'true';
   const isLastQuestion = quizIndex === lastIndex;
@@ -37,11 +42,17 @@ export default function QuestionForm({
   };
   const handleSubmit = (e) => {
     e.preventDefault();
+    localStorage.isSubmitted = true;
+    localStorage.userChoice = JSON.stringify(userChoice);
     setIsSubmitted(!isSubmitted);
-    isCorrect() && setScore((prev) => prev + 1);
-    console.log(score);
+    if (isCorrect()) {
+      localStorage.score = score + 1;
+      setScore(score + 1);
+    }
   };
   const goNext = () => {
+    localStorage.isSubmitted = false;
+    localStorage.currentQuizIndex = quizIndex + 1;
     setQuizIndex(quizIndex + 1);
     setUserChoice({
       answer_a: false,
@@ -51,6 +62,9 @@ export default function QuestionForm({
       answer_e: false,
       answer_f: false,
     });
+  };
+  const goResultPage = () => {
+    navigate('result');
   };
   const showOptions = () => {
     return isMultipleQuestion
@@ -103,7 +117,7 @@ export default function QuestionForm({
           <p>{quiz.explanation || 'There is no explanation.'}</p>
         </div>
         {isLastQuestion ? (
-          <button>Result</button>
+          <button onClick={goResultPage}>Result</button>
         ) : (
           <button onClick={goNext}>Next</button>
         )}
@@ -114,9 +128,15 @@ export default function QuestionForm({
     const choice = Object.entries(userChoice)
       .filter((choice) => choice[1])
       .map((c) => c[0]);
+    const numOfAnswer = Object.entries(quiz.correct_answers).filter(
+      (answer) => answer[1] === 'true'
+    ).length;
 
-    if (!choice.length) {
-      return !Object.values(quiz.correct_answers).some((a) => a === 'true');
+    if (numOfAnswer !== choice.length) {
+      return false;
+    }
+    if (numOfAnswer === 0 && choice.length === 0) {
+      return true;
     }
     return !choice.some(
       (c) => quiz.correct_answers[c + '_correct'] === 'false'
@@ -130,6 +150,7 @@ export default function QuestionForm({
       {showOptions()}
       {!isSubmitted && <button>submit</button>}
       {isSubmitted && showResult()}
+      <div>{score}</div>
     </form>
   );
 }
