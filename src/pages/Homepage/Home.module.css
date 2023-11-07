@@ -1,0 +1,10 @@
+.header {
+  margin: 2rem 0 15% 0;
+  width: 500px;
+  text-align: center;
+}
+.main {
+  display: flex;
+  justify-content: center;
+  width: 500px;
+}

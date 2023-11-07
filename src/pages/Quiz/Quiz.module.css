@@ -1,3 +1,10 @@
+.header {
+  margin-top: 1rem;
+  width: 600px;
+  text-align: center;
+}
 .difficulty {
+  width: 80%;
+  text-align: right;
   text-transform: capitalize;
 }

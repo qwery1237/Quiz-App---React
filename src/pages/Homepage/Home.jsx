@@ -1,13 +1,14 @@
 import React from 'react';
 import QuizActions from '../../components/QuizActions/QuizActions';
+import styles from './Home.module.css';
 
 export default function Home() {
   return (
     <>
-      <header>
-        <h2>Welcome to Quizzes</h2>
+      <header className={styles.header}>
+        <h1>Welcome to Quizzes</h1>
       </header>
-      <main>
+      <main className={styles.main}>
         <QuizActions />
       </main>
     </>

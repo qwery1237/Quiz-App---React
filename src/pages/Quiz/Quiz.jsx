@@ -19,21 +19,21 @@ export default function Quiz() {
   }, []);
 
   return (
-    <>
-      <header>
-        <h2>{params.category} Quiz</h2>
-        <h4 className={styles.difficulty}>{params.difficulty}</h4>
-      </header>
-      <main>
-        {quizzes && (
+    quizzes && (
+      <>
+        <header className={styles.header}>
+          <h1 className={styles.category}>{params.category} Quiz</h1>
+          <h3 className={styles.difficulty}>{params.difficulty}</h3>
+        </header>
+        <main>
           <QuestionForm
             quiz={quizzes[quizIndex]}
             quizIndex={quizIndex}
             setQuizIndex={setQuizIndex}
             isLastQuestion={quizIndex === quizzes.length - 1}
           />
-        )}
-      </main>
-    </>
+        </main>
+      </>
+    )
   );
 }

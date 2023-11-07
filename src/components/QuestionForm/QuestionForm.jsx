@@ -7,6 +7,7 @@ import {
   isCorrectAnswer,
   isMultipleQuistion,
 } from '../../utils/quizLogic';
+import styles from './QuestionForm.module.css';
 
 export default function QuestionForm({
   quiz,
@@ -58,7 +59,7 @@ export default function QuestionForm({
 
   return (
     <form onSubmit={handleSubmit}>
-      <div>
+      <div className={styles.questionBox}>
         <span>{`${quizIndex + 1}. ${quiz.question}`}</span>
         <QuestionOptions
           quiz={quiz}

@@ -23,7 +23,7 @@ export default function QuizActions() {
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
-      <div>
+      <div className={styles.optionBox}>
         <input
           type='radio'
           id='linux'
@@ -33,7 +33,9 @@ export default function QuizActions() {
           onChange={handleChange}
         />
         <label htmlFor='linux'>
-          <FaLinux /> <span>Linux</span>
+          <FaLinux className={styles.icons} />
+
+          <span>Linux</span>
         </label>
         <input
           type='radio'
@@ -44,7 +46,7 @@ export default function QuizActions() {
           onChange={handleChange}
         />
         <label htmlFor='docker'>
-          <FaDocker /> <span>Docker</span>
+          <FaDocker className={styles.icons} /> <span>Docker</span>
         </label>
         <input
           type='radio'
@@ -55,11 +57,11 @@ export default function QuizActions() {
           onChange={handleChange}
         />
         <label htmlFor='random'>
-          <FaRandom /> <span>Random Quiz</span>
+          <FaRandom className={styles.icons} /> <span>Random</span>
         </label>
       </div>
 
-      <div>
+      <div className={styles.optionBox}>
         <input
           type='radio'
           id='easy'
@@ -89,7 +91,7 @@ export default function QuizActions() {
         <label htmlFor='hard'>Hard</label>
       </div>
 
-      <div>
+      <div className={styles.optionBox}>
         <input
           type='radio'
           id='limit10'
@@ -119,7 +121,9 @@ export default function QuizActions() {
         <label htmlFor='limit20'>20</label>
       </div>
 
-      <button type='submit'>Start</button>
+      <button className={styles.button} type='submit'>
+        Start
+      </button>
     </form>
   );
 }

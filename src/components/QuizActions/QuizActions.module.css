@@ -1,7 +1,52 @@
-.form input[type='radio'] {
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 1.5rem;
+  padding: 1rem;
+  width: 400px;
+  height: 400px;
+  background-color: var(--color-secondary-background);
+}
+.optionBox {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.icons {
+  margin-right: 0.5rem;
+}
+.optionBox > label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30%;
+  height: 40px;
+  border: solid 1px var(--color-outline);
+  border-radius: 1rem;
+  color: var(--color-primary);
+}
+.optionBox > label:hover {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+.optionBox > input[type='radio'] {
   appearance: none;
 }
-
-.form input[type='radio']:checked + label {
-  background-color: aqua;
+.optionBox input[type='radio']:checked + label {
+  background-color: var(--color-primary);
+  color: var(--color-primary-selected);
+}
+.button {
+  height: 40px;
+  width: 45%;
+  border: none;
+  border-radius: 1rem;
+  background-color: var(--color-tertiary);
+  font-size: large;
+  font-weight: bold;
+}
+.button:hover {
+  background-color: #3c665a;
+  color: var(--color-primary-selected);
 }
