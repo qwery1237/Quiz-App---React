@@ -53,7 +53,7 @@ export default function QuestionForm({
     });
   };
   const goResultPage = () => {
-    navigate('result', { state: { score } });
+    navigate('result', { state: { score, totalNumOfQuiz: quizIndex + 1 } });
   };
 
   return (

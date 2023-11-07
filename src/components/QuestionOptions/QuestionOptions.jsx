@@ -25,7 +25,7 @@ export default function QuestionOptions({
     const question = answer[1];
     return (
       question && (
-        <div>
+        <div key={id}>
           <input
             type={isMultipleQuestion ? 'checkbox' : 'radio'}
             id={id}
