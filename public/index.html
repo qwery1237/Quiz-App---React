@@ -39,4 +39,11 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   </body>
+  <script>
+    if (window.location.pathname === '/quiz') {
+      window.addEventListener('beforeunload', function (e) {
+        e.returnValue =  'Are you sure you want to leave this page? Reloading this page will reset the ongoing quiz.'
+      });
+    }
+  </script>
 </html>

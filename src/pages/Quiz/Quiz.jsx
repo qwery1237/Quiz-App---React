@@ -5,36 +5,19 @@ import styles from './Quiz.module.css';
 import QuestionForm from '../../components/QuestionForm/QuestionForm';
 
 export default function Quiz() {
-  const [quizzes, setQuizzes] = useState([]);
-  const [currentQuizIndex, setCurrentQuizIndex] = useState(0);
-  const [score, setScore] = useState(0);
-  const [isLoading, setIsLoading] = useState(true);
-  const location = useLocation();
-  const key = location.key;
+  const [quizzes, setQuizzes] = useState();
+  const [quizIndex, setQuizIndex] = useState(0);
+
   const {
     state: { params },
   } = useLocation();
-  useEffect(() => {
-    const data = localStorage.getItem(['quiz', key]);
-    if (data) {
-      setQuizzes(JSON.parse(data));
-      setCurrentQuizIndex(+localStorage.currentQuizIndex);
-      setScore(+localStorage.score);
-      setIsLoading(false);
-      return;
-    }
 
-    getQuiz(params, key).then((res) => {
+  useEffect(() => {
+    getQuiz(params).then((res) => {
       setQuizzes(res);
-      setIsLoading(false);
-      localStorage.score = 0;
-      localStorage.currentQuizIndex = 0;
-      if (localStorage.isSubmitted) {
-        localStorage.removeItem('isSubmitted');
-        localStorage.removeItem('userChoice');
-      }
     });
   }, []);
+
   return (
     <>
       <header>
@@ -42,15 +25,12 @@ export default function Quiz() {
         <h4 className={styles.difficulty}>{params.difficulty}</h4>
       </header>
       <main>
-        {!isLoading && (
+        {quizzes && (
           <QuestionForm
-            quiz={quizzes[currentQuizIndex]}
-            quizIndex={currentQuizIndex}
-            setQuizIndex={setCurrentQuizIndex}
-            score={score}
-            setScore={setScore}
-            quizKey={key}
-            lastIndex={quizzes.length - 1}
+            quiz={quizzes[quizIndex]}
+            quizIndex={quizIndex}
+            setQuizIndex={setQuizIndex}
+            isLastQuestion={quizIndex === quizzes.length - 1}
           />
         )}
       </main>
