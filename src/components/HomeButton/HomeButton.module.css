@@ -1,0 +1,16 @@
+.link {
+  display: flex;
+  align-items: center;
+
+  padding: 0.6rem 1rem;
+  text-decoration: none;
+  border-radius: 0.7rem;
+
+  color: var(--color-primary-text);
+}
+.link:hover {
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
+}
+.icon {
+  margin-right: 0.5rem;
+}

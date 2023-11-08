@@ -42,12 +42,11 @@
   width: 45%;
   border: none;
   border-radius: 1rem;
-  color: var(--color-tertiary-text);
-  background-color: var(--color-tertiary);
+  color: var(--color-primary-text);
+  background-color: var(--color-teritary-dark);
   font-size: large;
   font-weight: bold;
 }
 .button:hover {
-  background-color: var(--color-teritary-dark);
-  color: var(--color-primary-text);
+  background-color: var(--color-error-dark);
 }

@@ -33,7 +33,7 @@
   background-color: var(--color-error);
 }
 .buttonBox {
-  padding: 1rem;
+  padding: 1.5rem 1rem;
 }
 .button {
   position: absolute;
@@ -49,10 +49,15 @@
   background-color: var(--color-primary);
 
   font-weight: bolder;
+
+  opacity: 0.8;
 }
 .correctBox .button {
   background-color: var(--color-teritary-dark);
 }
 .wrongBox .button {
   background-color: var(--color-error-dark);
+}
+.button:hover {
+  opacity: 1;
 }
