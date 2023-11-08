@@ -1,0 +1,10 @@
+.div {
+  display: flex;
+  flex-direction: column;
+}
+.div > * {
+  margin-bottom: 1rem;
+}
+.isCorrect {
+  font-weight: bold;
+}

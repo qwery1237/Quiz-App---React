@@ -1,4 +1,58 @@
 .questionBox {
+  position: relative;
+
   width: 700px;
-  background-color: var(--color-secondary-background);
+
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+
+  color: var(--color-secondary-text);
+  background-color: var(--color-secondary);
+  border-radius: 1rem;
+}
+.question {
+  width: 100%;
+  font-size: large;
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.result {
+  position: relative;
+
+  width: 700px;
+
+  padding: 1.5rem;
+
+  border-radius: 1rem;
+}
+.correct {
+  background-color: var(--color-tertiary);
+}
+.wrong {
+  background-color: var(--color-error);
+}
+.buttonBox {
+  padding: 1rem;
+}
+.button {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+
+  padding: 0.7rem;
+
+  border-radius: 0.7rem;
+  border: none;
+
+  color: var(--color-primary-text);
+  background-color: var(--color-primary);
+
+  font-weight: bolder;
+}
+.correctBox .button {
+  background-color: var(--color-teritary-dark);
+}
+.wrongBox .button {
+  background-color: var(--color-error-dark);
 }

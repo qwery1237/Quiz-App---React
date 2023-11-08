@@ -7,7 +7,7 @@
   padding: 1rem;
   width: 400px;
   height: 400px;
-  background-color: var(--color-secondary-background);
+  background-color: var(--color-secondary);
 }
 .optionBox {
   display: flex;
@@ -35,18 +35,19 @@
 }
 .optionBox input[type='radio']:checked + label {
   background-color: var(--color-primary);
-  color: var(--color-primary-selected);
+  color: var(--color-primary-text);
 }
 .button {
   height: 40px;
   width: 45%;
   border: none;
   border-radius: 1rem;
+  color: var(--color-tertiary-text);
   background-color: var(--color-tertiary);
   font-size: large;
   font-weight: bold;
 }
 .button:hover {
-  background-color: #3c665a;
-  color: var(--color-primary-selected);
+  background-color: var(--color-teritary-dark);
+  color: var(--color-primary-text);
 }

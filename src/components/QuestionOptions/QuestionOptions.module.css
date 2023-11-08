@@ -1,0 +1,12 @@
+.option {
+  display: flex;
+  margin-top: 1rem;
+}
+
+.input {
+  margin: 2.5px 8px 0 0;
+  accent-color: var(--color-primary);
+}
+.input:checked {
+  accent-color: var();
+}

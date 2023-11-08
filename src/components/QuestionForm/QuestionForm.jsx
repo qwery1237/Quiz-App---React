@@ -60,7 +60,9 @@ export default function QuestionForm({
   return (
     <form onSubmit={handleSubmit}>
       <div className={styles.questionBox}>
-        <span>{`${quizIndex + 1}. ${quiz.question}`}</span>
+        <p className={styles.question}>
+          {`${quizIndex + 1}. ${quiz.question}`}
+        </p>
         <QuestionOptions
           quiz={quiz}
           isSubmitted={isSubmitted}
@@ -68,20 +70,36 @@ export default function QuestionForm({
           setUserChoice={setUserChoice}
           isMultipleQuestion={isMultipleQuistion(quiz.correct_answers)}
         />
-        {!isSubmitted && <button>submit</button>}
+        <div className={styles.buttonBox}>
+          {!isSubmitted && <button className={styles.button}>submit</button>}
+        </div>
       </div>
       {isSubmitted && (
-        <div>
+        <div
+          className={`${styles.result} ${
+            isCorrect ? styles.correct : styles.wrong
+          }`}
+        >
           <QuestionResult
             isCorrect={isCorrect}
             correctAnswers={getCorrectAnswers(quiz.correct_answers)}
             explanation={quiz.explanation}
           />
-          {isLastQuestion ? (
-            <button onClick={goResultPage}>Result</button>
-          ) : (
-            <button onClick={goNext}>Next</button>
-          )}
+          <div
+            className={`${styles.buttonBox} ${
+              isCorrect ? styles.correctBox : styles.wrongBox
+            }`}
+          >
+            {isLastQuestion ? (
+              <button className={styles.button} onClick={goResultPage}>
+                Result
+              </button>
+            ) : (
+              <button className={styles.button} onClick={goNext}>
+                Next
+              </button>
+            )}
+          </div>
         </div>
       )}
     </form>

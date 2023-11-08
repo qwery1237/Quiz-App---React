@@ -1,5 +1,6 @@
 import React from 'react';
 import { updateUserChoice } from '../../utils/quizLogic';
+import styles from './QuestionOptions.module.css';
 
 export default function QuestionOptions({
   quiz,
@@ -25,8 +26,9 @@ export default function QuestionOptions({
     const question = answer[1];
     return (
       question && (
-        <div key={id}>
+        <div key={id} className={styles.option}>
           <input
+            className={styles.input}
             type={isMultipleQuestion ? 'checkbox' : 'radio'}
             id={id}
             name={isMultipleQuestion ? undefined : 'quiz'}
