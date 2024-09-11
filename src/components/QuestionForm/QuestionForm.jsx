@@ -31,7 +31,7 @@ export default function QuestionForm({
 
   useEffect(() => {
     setIsCorrect(isCorrectAnswer(quiz.correct_answers, userChoice));
-  }, [userChoice]);
+  }, [userChoice, quiz.correct_answers]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

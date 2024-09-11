@@ -16,7 +16,7 @@ export default function Quiz() {
     getQuiz(params).then((res) => {
       setQuizzes(res);
     });
-  }, []);
+  }, [params]);
 
   return (
     quizzes && (
