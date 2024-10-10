@@ -1,70 +1,38 @@
-# Getting Started with Create React App
+# Code Crack
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Coding Quiz App
 
-## Available Scripts
+Code Crack is a coding quiz app designed to improve my skills in React and API integration. Using Axios to fetch quiz challenges from an API, the app allows users to solve coding quizzes, review detailed explanations for each question, and track their score. This project helped me practice data fetching, state management, and creating a seamless user experience.
 
-In the project directory, you can run:
+## Motivation
 
-### `yarn start`
+I built this app as part of my React midterm project. The assignment gave me a choice between building a news page or a quiz app. Since I was more interested in React and wanted to challenge myself, I chose the quiz app. I found the quiz app to be more dynamic, as it presents various outcomes based on user input, which allowed for more complexity and variability in development.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Challenges I Faced
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+During the development of Code Crack, I encountered several challenges:
 
-### `yarn test`
+- **API Data Handling**: The external API did not provide information on whether a question was single-answer or multiple-answer. To address this, I created a utility function in `util.js` to determine the type based on the number of correct answers. Depending on this, I adjusted the form's structure to handle both types of questions.
+- **Preventing Post-Submission Edits**: It was challenging to prevent users from changing their answers after submitting a question. I solved this by removing the submit button once a question was submitted. Additionally, if a user tried to select an option after submission, the form would immediately return, preventing any further changes.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## What I Learned
 
-### `yarn build`
+Through this project, I gained experience in:
+- React state management.
+- Fetching data from external APIs using Axios.
+- Setting up routing with React Router.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## Tech Stack & Tools
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+[![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML) [![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS) [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript) [![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)](https://react.dev/) [![Axios](https://img.shields.io/badge/Axios-5A29E4?style=for-the-badge&logo=axios&logoColor=white)](https://axios-http.com/)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `yarn eject`
+## Key Features
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+- **Homepage**: Users can select the quiz genre, difficulty level, and the number of questions.
+- **Quiz Page**: The quiz includes both single and multiple-answer questions. After submission, users can see whether their answer was correct, view the correct answer, and read an explanation if available.
+- **Result Page**: Users can view the total number of correct answers.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Portfolio & GitHub Page
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+You can view this project as part of my portfolio and access the GitHub repository through [this link](https://qwery1237.github.io/portfolio/).
