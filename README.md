@@ -2,7 +2,7 @@
 
 ### Coding Quiz App
 
-Code Crack is a coding quiz app designed to improve my skills in React and API integration. Using Axios to fetch quiz challenges from an API, the app allows users to solve coding quizzes, review detailed explanations for each question, and track their score. This project helped me practice data fetching, state management, and creating a seamless user experience.
+Code Crack is a coding quiz app that allows users to solve coding quizzes, review detailed explanations for each question, and track their score.
 
 ## Motivation
 
